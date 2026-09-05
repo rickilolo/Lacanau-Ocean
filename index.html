@@ -1,297 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guide du Voyageur - Votre Séjour à Lacanau</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #0284c7;
-            --primary-dark: #0369a1;
-            --secondary: #f0f9ff;
-            --text: #1e293b;
-            --text-light: #64748b;
-            --bg-card: #ffffff;
-            --accent: #f59e0b;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: var(--text);
-            background: #f8fafc;
-            line-height: 1.6;
-            padding-bottom: 60px;
-        }
-
-        /* Hero Banner */
-        .hero {
-            background: linear-gradient(rgba(15, 23, 42, 0.55), rgba(15, 23, 42, 0.55)), 
-                        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-            color: white;
-            text-align: center;
-            padding: 80px 20px 60px;
-            border-radius: 0 0 30px 30px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: -0.5px;
-        }
-
-        .hero p {
-            font-size: 1.15rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-            font-weight: 300;
-        }
-
-        .badge-welcome {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(8px);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        /* Conteneur principal */
-        .container {
-            max-width: 900px;
-            margin: -30px auto 0;
-            padding: 0 20px;
-        }
-
-        /* Carte Wi-Fi Express */
-        .wifi-card {
-            background: linear-gradient(135deg, #0284c7, #0369a1);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(2, 132, 199, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .wifi-info h3 {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.8;
-        }
-
-        .wifi-info p {
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
-
-        .wifi-badge {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px 18px;
-            border-radius: 12px;
-            font-family: monospace;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-        }
-
-        /* Grille des sections */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: var(--bg-card);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border: 1px solid #edf2f7;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-        }
-
-        .card-icon {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            display: inline-block;
-            background: var(--secondary);
-            width: 55px;
-            height: 55px;
-            line-height: 55px;
-            text-align: center;
-            border-radius: 14px;
-            color: var(--primary);
-        }
-
-        .card h2 {
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-            color: var(--text);
-        }
-
-        .card ul {
-            list-style: none;
-        }
-
-        .card li {
-            position: relative;
-            padding-left: 24px;
-            margin-bottom: 10px;
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        .card li::before {
-            content: "•";
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 1.2rem;
-            position: absolute;
-            left: 5px;
-            top: -2px;
-        }
-
-        /* Section Contact / Assistance */
-        .contact-box {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 35px;
-            text-align: center;
-            margin-top: 30px;
-            border: 1px solid #edf2f7;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-        }
-
-        .contact-box h2 {
-            margin-bottom: 10px;
-        }
-
-        .btn-call {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 12px 28px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 15px;
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            color: var(--text-light);
-            font-size: 0.85rem;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Maison de vacances à Lacanau Océan, sous les pins, avec 3 chambres, jardin privatif, terrasse et piscine de la résidence.">
+<title>Petit Paradis sous les Pins — Lacanau Océan</title>
+<style>
+:root{--ink:#25302a;--pine:#31493d;--sand:#eee6d8;--cream:#faf8f3;--taupe:#9b8c78;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}.wrap{width:min(1120px,90%);margin:auto}
+header{position:absolute;z-index:5;width:100%;color:white}.nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0}.brand{font-weight:700;letter-spacing:.08em}.navlinks{display:flex;gap:24px;font-size:14px}
+.hero{min-height:88vh;display:grid;place-items:end start;background:linear-gradient(0deg,rgba(15,25,20,.58),rgba(15,25,20,.08)),url("images/maison-pins.jpg") center/cover no-repeat;color:white}
+.hero-inner{padding:0 0 9vh}.eyebrow{text-transform:uppercase;letter-spacing:.2em;font-size:12px}.hero h1{font:500 clamp(42px,7vw,82px)/1.02 Georgia,serif;max-width:800px;margin:12px 0 18px}.hero-name{font:500 clamp(44px,7vw,82px)/1.02 Georgia,serif;max-width:820px;margin:0 0 16px}.hero-place{font-size:11px;font-weight:700;letter-spacing:.28em;margin-bottom:10px;opacity:.92}.hero-tagline{font:italic 19px/1.4 Georgia,serif;margin-bottom:18px}.hero p{font-size:17px;max-width:610px;opacity:.92}
+.btn{display:inline-block;margin-top:14px;background:white;color:var(--pine);padding:13px 20px;border-radius:999px;font-weight:650}
+.facts{background:var(--pine);color:white}.facts .wrap{display:grid;grid-template-columns:repeat(5,1fr);padding:24px 0;text-align:center;gap:10px}.facts strong{display:block;font-size:19px}.facts span{font-size:12px;opacity:.78}
+section{padding:88px 0}.intro{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}.intro h2,.section-title{font:500 clamp(34px,5vw,55px)/1.12 Georgia,serif;margin:0 0 20px}.intro img{width:100%;height:520px;object-fit:cover;border-radius:3px}
+.kicker{color:var(--taupe);text-transform:uppercase;letter-spacing:.17em;font-size:12px;font-weight:700}
+.gallery{background:var(--sand)}.gallery-grid{display:grid;grid-template-columns:1.35fr .65fr;grid-template-rows:300px 300px;gap:12px;margin-top:36px}.gallery-grid img{width:100%;height:100%;object-fit:cover}.gallery-grid img:first-child{grid-row:1/3}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:35px}.card{padding:30px;background:white;border:1px solid #e8e1d6}.card h3{font:500 24px Georgia,serif;margin:8px 0}
+.outdoor{display:grid;grid-template-columns:1.15fr .85fr;gap:55px;align-items:center}.outdoor img{width:100%;height:560px;object-fit:cover}
+.location{background:var(--pine);color:white;text-align:center}.location p{max-width:700px;margin:0 auto 25px;opacity:.9}
+.contact{text-align:center}.contact p{max-width:650px;margin:auto}.ghost{border:1px solid var(--pine);background:transparent}
+footer{padding:30px 0;border-top:1px solid #ded8ce;font-size:13px;color:#6f746f}.foot{display:flex;justify-content:space-between}
+.note{font-size:12px;color:#777;margin-top:18px}
+@media(max-width:760px){.navlinks{display:none}.hero{min-height:78vh}.facts .wrap{grid-template-columns:repeat(2,1fr)}.facts .wrap>div:last-child{grid-column:1/3}.intro,.outdoor{grid-template-columns:1fr;gap:30px}.intro img,.outdoor img{height:390px}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:310px 190px}.gallery-grid img:first-child{grid-column:1/3;grid-row:auto}.cards{grid-template-columns:1fr}section{padding:65px 0}.foot{display:block}.foot div+div{margin-top:8px}}
+</style>
 </head>
 <body>
+<header><div class="wrap nav"><a class="brand" href="#">PETIT PARADIS SOUS LES PINS</a><nav class="navlinks"><a href="#maison">La maison</a><a href="#galerie">Galerie</a><a href="#alentours">Lacanau</a><a href="#contact">Contact</a></nav></div></header>
 
-    <!-- En-tête -->
-    <header class="hero">
-        <span class="badge-welcome">Livret d'accueil numérique</span>
-        <h1>Bienvenue à Lacanau !</h1>
-        <p>Tout ce que vous devez savoir pour passer un séjour agréable et sans souci dans votre logement.</p>
-    </header>
+<main>
+<section class="hero"><div class="wrap hero-inner">
+<div class="hero-name">Petit Paradis<br>sous les Pins</div>
+<div class="hero-place">LACANAU OCÉAN</div>
+<div class="hero-tagline">Au cœur du golf, entre lac et océan</div>
+<p>Une maison chaleureuse avec jardin et terrasse, nichée sous les pins pour des vacances au rythme de Lacanau.</p>
+<a class="btn" href="#maison">Découvrir la maison</a>
+</div></section>
 
-    <div class="container">
+<div class="facts"><div class="wrap"><div><strong>≈ 72 m²</strong><span>Maison</span></div><div><strong>3</strong><span>Chambres</span></div><div><strong>6–8</strong><span>Voyageurs*</span></div><div><strong>≈ 350 m²</strong><span>Jardin privatif</span></div><div><strong>Piscine</strong><span>Résidence</span></div></div></div>
 
-        <!-- Carte d'accès Wi-Fi rapide -->
-        <div class="wifi-card">
-            <div class="wifi-info">
-                <h3>📶 Accès Wi-Fi</h3>
-                <p>Réseau : <span>Maison_Lacanau_5G</span></p>
-            </div>
-            <div class="wifi-badge">
-                Code : <strong>Lacanau2026!</strong>
-            </div>
-        </div>
+<section id="maison"><div class="wrap intro"><div><div class="kicker">Esprit vacances</div><h2>Au calme, dans la pinède</h2><p>À Lacanau Océan, la maison s'ouvre largement sur une terrasse en bois et un jardin arboré. Les pins, la végétation et les espaces extérieurs créent une atmosphère paisible, idéale pour profiter des vacances en famille ou entre amis.</p><p>À l'intérieur, la pièce de vie bénéficie d'un beau volume sous les poutres et communique avec la cuisine. Trois chambres permettent d'accueillir confortablement famille et invités.</p><p class="note">* Capacité définitive et équipements à confirmer avant l'ouverture des réservations.</p></div><img src="images/terrasse.jpg" alt="Terrasse en bois de la maison à Lacanau"></div></section>
 
-        <!-- Grille d'informations -->
-        <div class="grid">
+<section id="galerie" class="gallery"><div class="wrap"><div class="kicker">Quelques images</div><h2 class="section-title">La maison & ses espaces</h2><div class="gallery-grid"><img src="images/terrasse-large.jpg" alt="Grande terrasse sous les pins"><img src="images/sejour.jpg" alt="Pièce de vie lumineuse"><img src="images/cuisine.jpg" alt="Cuisine équipée"></div><p class="note">Photos provisoires prises avant le réaménagement de la maison. Une nouvelle galerie sera publiée après les travaux.</p></div></section>
 
-            <!-- 1. Arrivée & Clés -->
-            <div class="card">
-                <div class="card-icon">🔑</div>
-                <h2>Arrivée & Départ</h2>
-                <ul>
-                    <li><strong>Arrivée :</strong> À partir de 16h00 via la boîte à clés sécurisée (Code : 1234).</li>
-                    <li><strong>Départ :</strong> Avant 10h00. Merci de replacer les clés dans la boîte.</li>
-                    <li><strong>Parking :</strong> Place n° 12 réservée dans l'enceinte de la résidence.</li>
-                </ul>
-            </div>
+<section><div class="wrap"><div class="kicker">L'essentiel</div><h2 class="section-title">Pensée pour les vacances</h2><div class="cards"><article class="card"><div>01</div><h3>Vivre dehors</h3><p>Une grande terrasse en bois et un jardin arboré pour déjeuner, lire et profiter de la douceur des soirées.</p></article><article class="card"><div>02</div><h3>Se retrouver</h3><p>Une pièce de vie ouverte et conviviale, avec de beaux volumes et des accès directs vers l'extérieur.</p></article><article class="card"><div>03</div><h3>Se détendre</h3><p>La piscine de la résidence complète les journées entre plage, balades à vélo et activités autour de Lacanau.</p></article></div></div></section>
 
-            <!-- 2. Fonctionnement Maison -->
-            <div class="card">
-                <div class="card-icon">🏠</div>
-                <h2>Dans le logement</h2>
-                <ul>
-                    <li><strong>Poubelles :</strong> Le tri sélectif se situe au local poubelles près du portail d'entrée.</li>
-                    <li><strong>Électroménager :</strong> Les notices d'utilisation sont rangées dans le tiroir sous le four.</li>
-                    <li><strong>Climatisation/Chauffage :</strong> Réglable via la télécommande murale du salon.</li>
-                </ul>
-            </div>
+<section><div class="wrap outdoor"><img src="images/facade-terrasse.jpg" alt="Maison et terrasse côté jardin"><div><div class="kicker">Le jardin</div><h2 class="section-title">Du bois, des pins, de l'espace</h2><p>La terrasse prolonge naturellement la maison. Le jardin privatif, entouré de végétation, offre un cadre typiquement canaulais et préserve l'esprit nature du lieu.</p><p>Le mobilier extérieur et les aménagements présentés sur certaines photos seront renouvelés avant la mise en location.</p></div></div></section>
 
-            <!-- 3. La Résidence -->
-            <div class="card">
-                <div class="card-icon">🏢</div>
-                <h2>Vie dans la résidence</h2>
-                <ul>
-                    <li><strong>Tranquillité :</strong> Merci de respecter le calme après 22h00.</li>
-                    <li><strong>Local Vélos :</strong> Accessible au rez-de-chaussée avec la clé du logement.</li>
-                    <li><strong>Piscine / Espaces :</strong> Ouverts de 9h à 20h. Les draps de plage sont requis.</li>
-                </ul>
-            </div>
+<section id="alentours" class="location"><div class="wrap"><div class="kicker">Lacanau Océan</div><h2 class="section-title">Océan, lac, golf & forêt</h2><p>Une destination où l'on alterne plage, surf, pistes cyclables, balades sous les pins, lac et golf. La maison constitue un point de départ paisible pour profiter de tout ce qui fait l'esprit de Lacanau.</p></div></section>
 
-            <!-- 4. Autour de vous -->
-            <div class="card">
-                <div class="card-icon">🏖️</div>
-                <h2>À proximité</h2>
-                <ul>
-                    <li><strong>Plages :</strong> Plage Sud à 5 min à vélo via la piste cyclable.</li>
-                    <li><strong>Boulangerie :</strong> "Le Pain des Dunes" à 300m (ouverte dès 7h30).</li>
-                    <li><strong>Supermarché :</strong> Carrefour Contact à 5 minutes en voiture.</li>
-                </ul>
-            </div>
+<section id="contact" class="contact"><div class="wrap"><div class="kicker">Votre séjour</div><h2 class="section-title">Bientôt disponible à la location</h2><p>Le site est en cours de préparation. Les disponibilités, tarifs et modalités de réservation seront ajoutés prochainement.</p><a class="btn ghost" href="mailto:VOTRE-EMAIL@EXEMPLE.FR">Nous contacter</a><p class="note">Remplacez VOTRE-EMAIL@EXEMPLE.FR dans index.html avant publication.</p></div></section>
+</main>
 
-        </div>
-
-        <!-- Section Contact / Urgence -->
-        <div class="contact-box">
-            <h2>Une question pendant votre séjour ?</h2>
-            <p>Nous restons joignables par téléphone ou message pour vous aider.</p>
-            <a href="tel:0600000000" class="btn-call">📞 Contacter l'hôte (06 00 00 00 00)</a>
-        </div>
-
-        <footer>
-            <p>Passez un d'excellentes vacances à Lacanau Océan ! 🌊</p>
-        </footer>
-
-    </div>
-
+<footer><div class="wrap foot"><div>© 2026 · Petit Paradis sous les Pins · Lacanau Océan</div><div><a href="guide.html">Livret d'accueil</a></div></div></footer>
 </body>
 </html>
