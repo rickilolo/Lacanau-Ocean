@@ -1,0 +1,141 @@
+
+:root{
+  --pin:#29473b;
+  --pin-dark:#1f382f;
+  --sauge:#7f927f;
+  --sable:#efe7d8;
+  --lin:#f7f3eb;
+  --ivoire:#fffdf8;
+  --bois:#a87955;
+  --terracotta:#c47b5a;
+  --texte:#2d342f;
+  --muted:#707871;
+  --ligne:#ddd4c5;
+  --ombre:0 12px 35px rgba(43,55,47,.09);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--lin);
+  color:var(--texte);
+  font-family:"Plus Jakarta Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.65;
+}
+a{color:inherit}
+.wrap{width:min(1100px,calc(100% - 40px));margin:auto}
+.topbar{
+  position:sticky;top:0;z-index:20;
+  background:rgba(255,253,248,.91);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(221,212,197,.75);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:68px}
+.brand{text-decoration:none;color:var(--pin-dark);line-height:1.05}
+.brand strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:1.22rem;font-weight:500}
+.brand span{display:block;font-size:.62rem;letter-spacing:.23em;margin-top:6px;color:var(--sauge)}
+.navlinks{display:flex;align-items:center;gap:18px}
+.navlinks a{text-decoration:none;font-size:.87rem;font-weight:600;color:var(--pin)}
+.navlinks .download{padding:10px 15px;border:1px solid var(--pin);border-radius:999px}
+.hero{
+  min-height:510px;
+  display:grid;
+  align-items:end;
+  color:white;
+  background:
+    linear-gradient(90deg,rgba(24,46,38,.78),rgba(24,46,38,.34) 58%,rgba(24,46,38,.18)),
+    linear-gradient(180deg,rgba(24,46,38,.04),rgba(24,46,38,.45)),
+    url("images/maison-pins.jpg") center/cover no-repeat,
+    var(--pin);
+}
+.hero-inner{padding:110px 0 74px}
+.kicker{font-size:.73rem;text-transform:uppercase;letter-spacing:.2em;font-weight:700}
+.hero .kicker{color:#e8e4d8}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:500}
+h1{font-size:clamp(3rem,8vw,6rem);line-height:.94;letter-spacing:-.04em;margin:.16em 0 .22em;max-width:850px}
+.hero p{font-size:1.12rem;max-width:650px;color:#f2eee5;margin:0}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  text-decoration:none;border-radius:999px;padding:12px 18px;font-weight:700;font-size:.9rem
+}
+.btn-solid{background:var(--ivoire);color:var(--pin)}
+.btn-ghost{border:1px solid rgba(255,255,255,.62);color:white}
+.quick{margin-top:-30px;position:relative;z-index:2}
+.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.quick-card{
+  background:var(--ivoire);border:1px solid #e9e1d4;border-radius:18px;
+  padding:18px;text-align:center;box-shadow:var(--ombre)
+}
+.quick-card strong{display:block;color:var(--pin);font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:1.8rem;line-height:1.1}
+.quick-card span{font-size:.79rem;color:var(--muted)}
+section{padding:72px 0}
+.section-head{max-width:720px;margin-bottom:30px}
+.section-head .kicker{color:var(--terracotta)}
+h2{font-size:clamp(2.15rem,5vw,3.5rem);line-height:1.04;color:var(--pin-dark);margin:.18em 0 .33em;letter-spacing:-.03em}
+.section-head p{color:var(--muted);font-size:1.03rem;margin:0}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.card{
+  background:var(--ivoire);border:1px solid #e6ddd0;border-radius:22px;
+  padding:26px;box-shadow:0 8px 24px rgba(40,53,45,.05)
+}
+.card .number{font-size:.72rem;letter-spacing:.13em;color:var(--terracotta);font-weight:800}
+.card h3{font-size:1.55rem;color:var(--pin);margin:.22em 0 .45em}
+.card ul{margin:0;padding-left:1.12em}
+.card li{margin:.47em 0}
+.card li::marker{color:var(--bois)}
+.pool{background:var(--sable)}
+.pool-grid{display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:34px}
+.pool-time{
+  background:var(--pin);border-radius:28px;color:white;padding:38px;text-align:center;
+  box-shadow:0 16px 40px rgba(41,71,59,.16)
+}
+.pool-time strong{font-family:Georgia,"Times New Roman",serif;font-size:clamp(3.2rem,8vw,5.6rem);font-weight:500;display:block;line-height:1}
+.pool-time span{font-size:.9rem;color:#dfe7e1}
+.note{
+  margin-top:22px;border-left:4px solid var(--terracotta);
+  background:#fff7ef;padding:17px 19px;border-radius:0 14px 14px 0
+}
+.spirit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.spirit{background:var(--sable);border-radius:20px;padding:24px}
+.spirit .kicker{color:var(--terracotta)}
+.spirit h3{font-size:1.4rem;color:var(--pin);margin:.25em 0 .35em}
+.spirit p{margin:0;color:#59615c}
+.emergency{background:var(--pin-dark);color:white}
+.emergency h2{color:white}
+.emergency .section-head p{color:#dfe5e1}
+.numbers{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.number-card{border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:20px;text-align:center}
+.number-card strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:2rem;font-weight:500}
+.number-card span{font-size:.78rem;color:#dce4df}
+.pdf-block{background:var(--ivoire)}
+.pdf-box{
+  border:1px solid var(--ligne);background:linear-gradient(135deg,var(--sable),var(--ivoire));
+  border-radius:26px;padding:30px;display:flex;justify-content:space-between;gap:28px;align-items:center
+}
+.pdf-box h2{font-size:2rem;margin:0 0 .25em}
+.pdf-box p{margin:0;color:var(--muted)}
+.pdf-box .btn{background:var(--pin);color:white;white-space:nowrap}
+footer{padding:28px 0 42px;text-align:center;color:var(--muted);font-size:.82rem}
+@media(max-width:760px){
+  .navlinks a:not(.download){display:none}
+  .hero{min-height:470px}
+  .hero-inner{padding:90px 0 62px}
+  .quick-grid,.cards,.pool-grid,.spirit-grid,.numbers{grid-template-columns:1fr 1fr}
+  .pdf-box{display:block}.pdf-box .btn{margin-top:18px}
+}
+@media(max-width:520px){
+  .wrap{width:min(100% - 28px,1100px)}
+  .quick-grid,.cards,.pool-grid,.spirit-grid,.numbers{grid-template-columns:1fr}
+  section{padding:56px 0}
+  .quick-card{text-align:left}
+}
+@media print{
+  .topbar,.hero-actions,.pdf-block{display:none!important}
+  .hero{min-height:0;color:#111;background:white}
+  .hero-inner{padding:28px 0}
+  .hero p,.hero .kicker{color:#444}
+  .quick{margin-top:0}
+  section{padding:28px 0}
+  .card,.quick-card{box-shadow:none}
+}
