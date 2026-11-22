@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#31493d">
+<title>Espace voyageurs — Petit Paradis sous les Pins</title>
+<style>
+:root{--pine:#31493d;--pine-dark:#21342b;--cream:#faf8f3;--sand:#eee6d8;--ink:#26332c;--white:#fff;--line:#e5dfd5}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{width:min(980px,92%);margin:auto}
+.top{background:var(--pine);color:#fff;padding:20px 0}
+.top a{color:#fff;text-decoration:none;font-weight:700}
+main{padding:58px 0}
+.card{background:#fff;border:1px solid var(--line);padding:30px;box-shadow:0 16px 40px rgba(33,52,43,.08)}
+h1,h2{font-family:Georgia,serif;font-weight:500}
+h1{font-size:clamp(34px,6vw,54px);margin:0 0 12px}
+h2{font-size:30px;margin:0 0 14px}
+.lead{font-size:18px;color:#556159}
+.login{max-width:520px;margin:40px auto}
+label{display:block;font-weight:700;margin-bottom:7px}
+input{width:100%;padding:14px 15px;border:1px solid #cfc8bd;border-radius:8px;font-size:17px}
+button{margin-top:14px;width:100%;padding:14px;border:0;border-radius:999px;background:var(--pine);color:#fff;font-weight:800;font-size:16px;cursor:pointer}
+.msg{margin-top:10px;font-size:14px;color:#8a3b2f;min-height:22px}
+.private{display:none}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px}
+.box{background:#fff;border:1px solid var(--line);padding:22px}
+.mapbox{margin-top:24px;background:#fff;border:1px solid var(--line);padding:12px}
+iframe{width:100%;height:430px;border:0;display:block}
+.link{display:inline-block;margin-top:10px;color:var(--pine);font-weight:700}
+.notice{background:var(--sand);padding:14px 16px;margin-top:20px;font-size:14px}
+.logout{background:transparent;border:1px solid #fff;width:auto;padding:8px 14px;margin:0;color:#fff}
+.toprow{display:flex;align-items:center;justify-content:space-between;gap:15px}
+@media(max-width:700px){main{padding:36px 0}.grid{grid-template-columns:1fr}.card{padding:22px}iframe{height:340px}}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap toprow"><a href="apercu.html">← Retour au site</a><button id="logout" class="logout" style="display:none">Déconnexion</button></div></div>
+<main>
+  <div class="wrap">
+    <section id="loginBox" class="card login">
+      <h1>Espace voyageurs</h1>
+      <p class="lead">Cet espace contient les informations réservées aux personnes séjournant au Petit Paradis sous les Pins.</p>
+      <label for="password">Mot de passe</label>
+      <input id="password" type="password" autocomplete="current-password" placeholder="Votre mot de passe">
+      <button id="loginBtn">Accéder à l'espace voyageurs</button>
+      <div id="message" class="msg"></div>
+    </section>
+
+    <section id="privateArea" class="private">
+      <h1>Bienvenue au Petit Paradis sous les Pins</h1>
+      <p class="lead">Vous trouverez ici les informations pratiques utiles pour votre arrivée et votre séjour.</p>
+
+      <div class="grid">
+        <div class="box">
+          <h2>Accès & arrivée</h2>
+          <p>Les informations détaillées d'arrivée, de stationnement et d'accès à la résidence peuvent être ajoutées ici.</p>
+        </div>
+        <div class="box">
+          <h2>Livret d'accueil</h2>
+          <p>Consultez le guide pratique de la maison et de la résidence.</p>
+          <a class="link" href="livret.html">Ouvrir le livret d'accueil →</a>
+        </div>
+      </div>
+
+      <div class="mapbox">
+        <h2>Carte d'accès & alentours</h2>
+        <iframe
+          title="Plan Lacanau — pistes cyclables et commodités"
+          allowfullscreen
+          allow="geolocation"
+          loading="lazy"
+          src="https://umap.openstreetmap.de/fr/map/plan-lacanau-pistes-cyclables-commodites_167544?scaleControl=false&miniMapControl=false&scrollWheelZoom=false&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true">
+        </iframe>
+        <a class="link" target="_blank" rel="noopener" href="https://umap.openstreetmap.de/fr/map/plan-lacanau-pistes-cyclables-commodites_167544?scaleControl=false&miniMapControl=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true">Voir la carte en plein écran ↗</a>
+      </div>
+
+      <div class="notice">L'accès est mémorisé sur cet appareil pendant 7 jours afin d'éviter de ressaisir le mot de passe à chaque visite.</div>
+    </section>
+  </div>
+</main>
+
+<script>
+const PASSWORD="pins2027";
+const KEY="ppsp_access_until";
+const WEEK=7*24*60*60*1000;
+const loginBox=document.getElementById("loginBox");
+const privateArea=document.getElementById("privateArea");
+const password=document.getElementById("password");
+const msg=document.getElementById("message");
+const logout=document.getElementById("logout");
+function showPrivate(){
+  loginBox.style.display="none";
+  privateArea.style.display="block";
+  logout.style.display="inline-block";
+}
+function showLogin(){
+  loginBox.style.display="block";
+  privateArea.style.display="none";
+  logout.style.display="none";
+}
+const until=Number(localStorage.getItem(KEY)||0);
+if(Date.now()<until) showPrivate(); else showLogin();
+document.getElementById("loginBtn").addEventListener("click",()=>{
+  if(password.value===PASSWORD){
+    localStorage.setItem(KEY,String(Date.now()+WEEK));
+    msg.textContent="";
+    showPrivate();
+  }else{
+    msg.textContent="Mot de passe incorrect.";
+  }
+});
+password.addEventListener("keydown",e=>{if(e.key==="Enter")document.getElementById("loginBtn").click();});
+logout.addEventListener("click",()=>{localStorage.removeItem(KEY);password.value="";showLogin();});
+</script>
+</body>
+</html>
