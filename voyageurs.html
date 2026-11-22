@@ -71,11 +71,12 @@ iframe{width:100%;height:430px;border:0;display:block}
           <aside class="legend" aria-label="Légende interactive">
             <h3>Explorer les alentours</h3>
             <div class="legend-list">
-              <button type="button" class="legend-btn active" data-cat="velo"><span class="legend-dot" style="background:#2f6fed"></span>🚲 Vélo</button>
-              <button type="button" class="legend-btn" data-cat="plages"><span class="legend-dot" style="background:#3aa0d8"></span>🏖️ Plages</button>
-              <button type="button" class="legend-btn" data-cat="courses"><span class="legend-dot" style="background:#e08a2e"></span>🛒 Courses</button>
-              <button type="button" class="legend-btn" data-cat="loisirs"><span class="legend-dot" style="background:#4f8b4f"></span>⛳ Loisirs</button>
-              <button type="button" class="legend-btn" data-cat="recharge"><span class="legend-dot" style="background:#d9b300"></span>⚡ Recharge</button>
+              <button type="button" class="legend-btn active" data-cat="velo"><span class="legend-dot" style="background:#f19ab0"></span>🚲 Vélo</button>
+              <button type="button" class="legend-btn" data-cat="plages"><span class="legend-dot" style="background:#ffe6a8"></span>🏖️ Plages</button>
+              <button type="button" class="legend-btn" data-cat="courses"><span class="legend-dot" style="background:#092b8a"></span>🛒 Courses</button>
+              <button type="button" class="legend-btn" data-cat="loisirs"><span class="legend-dot" style="background:#f7df73"></span>⛳ Loisirs</button>
+              <button type="button" class="legend-btn" data-cat="recharge"><span class="legend-dot" style="background:#3f7f18"></span>⚡ Recharge</button>
+              <button type="button" class="legend-btn" data-cat="maison"><span class="legend-dot" style="background:#df6549"></span>🏠 Maison</button>
             </div>
             <div id="legendInfo" class="legend-info" aria-live="polite">
               <strong>🚲 Vélo</strong>
@@ -138,7 +139,8 @@ const legendData={
   plages:{title:"🏖️ Plages",text:"Retrouvez les principaux accès aux plages océanes, dont les plages du centre et du secteur sud."},
   courses:{title:"🛒 Courses",text:"Les commerces utiles pour les courses du quotidien sont repérés sur la carte pour préparer facilement le séjour."},
   loisirs:{title:"⛳ Loisirs",text:"Golf de l’Ardilouse, tennis et autres activités sont regroupés dans cette catégorie."},
-  recharge:{title:"⚡ Recharge",text:"Les solutions de recharge pour véhicule électrique à proximité de la résidence sont indiquées sur la carte."}
+  recharge:{title:"⚡ Recharge",text:"Les solutions de recharge pour véhicule électrique à proximité de la résidence sont indiquées sur la carte."},
+  maison:{title:"🏠 Maison",text:"Le repère rouge correspond au Petit Paradis sous les Pins. Cette localisation précise reste réservée à l’espace voyageurs."}
 };
 document.querySelectorAll(".legend-btn").forEach(btn=>{
   btn.addEventListener("click",()=>{
