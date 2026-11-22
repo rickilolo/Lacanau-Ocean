@@ -32,7 +32,8 @@ iframe{width:100%;height:430px;border:0;display:block}
 .notice{background:var(--sand);padding:14px 16px;margin-top:20px;font-size:14px}
 .logout{background:transparent;border:1px solid #fff;width:auto;padding:8px 14px;margin:0;color:#fff}
 .toprow{display:flex;align-items:center;justify-content:space-between;gap:15px}
-@media(max-width:700px){main{padding:36px 0}.grid{grid-template-columns:1fr}.card{padding:22px}iframe{height:340px}}
+@media(max-width:700px){main{padding:36px 0}.grid{grid-template-columns:1fr}.card{padding:22px}.map-layout{grid-template-columns:1fr}.legend-list{grid-template-columns:1fr 1fr}.legend-info{min-height:0}iframe{height:340px}}
+@media(max-width:460px){.legend-list{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -66,14 +67,32 @@ iframe{width:100%;height:430px;border:0;display:block}
 
       <div class="mapbox">
         <h2>Carte d'accès & alentours</h2>
-        <iframe
-          title="Plan Lacanau — pistes cyclables et commodités"
-          allowfullscreen
-          allow="geolocation"
-          loading="lazy"
-          src="https://umap.openstreetmap.de/fr/map/plan-lacanau-pistes-cyclables-commodites_167544?scaleControl=false&miniMapControl=false&scrollWheelZoom=false&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true">
-        </iframe>
-        <a class="link" target="_blank" rel="noopener" href="https://umap.openstreetmap.de/fr/map/plan-lacanau-pistes-cyclables-commodites_167544?scaleControl=false&miniMapControl=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true">Voir la carte en plein écran ↗</a>
+        <div class="map-layout">
+          <aside class="legend" aria-label="Légende interactive">
+            <h3>Explorer les alentours</h3>
+            <div class="legend-list">
+              <button type="button" class="legend-btn active" data-cat="velo"><span class="legend-dot" style="background:#2f6fed"></span>🚲 Vélo</button>
+              <button type="button" class="legend-btn" data-cat="plages"><span class="legend-dot" style="background:#3aa0d8"></span>🏖️ Plages</button>
+              <button type="button" class="legend-btn" data-cat="courses"><span class="legend-dot" style="background:#e08a2e"></span>🛒 Courses</button>
+              <button type="button" class="legend-btn" data-cat="loisirs"><span class="legend-dot" style="background:#4f8b4f"></span>⛳ Loisirs</button>
+              <button type="button" class="legend-btn" data-cat="recharge"><span class="legend-dot" style="background:#d9b300"></span>⚡ Recharge</button>
+            </div>
+            <div id="legendInfo" class="legend-info" aria-live="polite">
+              <strong>🚲 Vélo</strong>
+              Les pistes cyclables permettent de rejoindre facilement le centre, les plages et plusieurs activités autour de Lacanau.
+            </div>
+          </aside>
+          <div>
+            <iframe
+              title="Plan Lacanau — pistes cyclables et commodités"
+              allowfullscreen
+              allow="geolocation"
+              loading="lazy"
+              src="https://umap.openstreetmap.de/fr/map/plan-lacanau-pistes-cyclables-commodites_167544?scaleControl=false&miniMapControl=false&scrollWheelZoom=false&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true">
+            </iframe>
+            <a class="link" target="_blank" rel="noopener" href="https://umap.openstreetmap.de/fr/map/plan-lacanau-pistes-cyclables-commodites_167544?scaleControl=false&miniMapControl=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true">Voir la carte en plein écran ↗</a>
+          </div>
+        </div>
       </div>
 
       <div class="notice">L'accès est mémorisé sur cet appareil pendant 7 jours afin d'éviter de ressaisir le mot de passe à chaque visite.</div>
@@ -113,6 +132,22 @@ document.getElementById("loginBtn").addEventListener("click",()=>{
 });
 password.addEventListener("keydown",e=>{if(e.key==="Enter")document.getElementById("loginBtn").click();});
 logout.addEventListener("click",()=>{localStorage.removeItem(KEY);password.value="";showLogin();});
+
+const legendData={
+  velo:{title:"🚲 Vélo",text:"Les pistes cyclables permettent de rejoindre facilement le centre, les plages et plusieurs activités autour de Lacanau."},
+  plages:{title:"🏖️ Plages",text:"Retrouvez les principaux accès aux plages océanes, dont les plages du centre et du secteur sud."},
+  courses:{title:"🛒 Courses",text:"Les commerces utiles pour les courses du quotidien sont repérés sur la carte pour préparer facilement le séjour."},
+  loisirs:{title:"⛳ Loisirs",text:"Golf de l’Ardilouse, tennis et autres activités sont regroupés dans cette catégorie."},
+  recharge:{title:"⚡ Recharge",text:"Les solutions de recharge pour véhicule électrique à proximité de la résidence sont indiquées sur la carte."}
+};
+document.querySelectorAll(".legend-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".legend-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    const d=legendData[btn.dataset.cat];
+    document.getElementById("legendInfo").innerHTML="<strong>"+d.title+"</strong>"+d.text;
+  });
+});
 </script>
 </body>
 </html>
